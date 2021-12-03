@@ -1,0 +1,53 @@
+﻿@model LamborghiniAuto.Models.Dipendente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Dipendente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AggiuntaDipendente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cognome" class="control-label"></label>
+                <input asp-for="cognome" class="form-control" />
+                <span asp-validation-for="cognome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stipendio" class="control-label"></label>
+                <input asp-for="stipendio" class="form-control" />
+                <span asp-validation-for="stipendio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mestiere" class="control-label"></label>
+                <input asp-for="mestiere" class="form-control" />
+                <span asp-validation-for="mestiere" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataNascita" class="control-label"></label>
+                <input asp-for="dataNascita" class="form-control" />
+                <span asp-validation-for="dataNascita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

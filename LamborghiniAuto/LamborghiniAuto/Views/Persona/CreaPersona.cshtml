@@ -1,0 +1,43 @@
+﻿@model LamborghiniAuto.Models.Persona
+
+@{
+    ViewData["Title"] = "CreaPersona";
+}
+
+<h1>Create</h1>
+
+<h4>Persona</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" autocomplete="off"/>
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cognome" class="control-label"></label>
+                <input asp-for="cognome" class="form-control" autocomplete="off"/>
+                <span asp-validation-for="cognome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataNascita" class="control-label"></label>
+                <input asp-for="dataNascita" class="form-control" autocomplete="off" />
+                <span asp-validation-for="dataNascita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crea Persona" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

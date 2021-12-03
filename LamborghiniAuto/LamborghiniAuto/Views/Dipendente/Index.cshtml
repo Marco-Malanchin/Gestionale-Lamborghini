@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LamborghiniAuto.Models.Dipendente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AggiuntaDipendente">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.stipendio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mestiere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cognome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataNascita)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stipendio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mestiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dataNascita)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
+                <a asp-action="Licenzia" asp-route-id="@item.id">Licenzia</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
