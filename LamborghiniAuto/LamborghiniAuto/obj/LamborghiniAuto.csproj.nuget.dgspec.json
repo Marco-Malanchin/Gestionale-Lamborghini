@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\4F\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj": {}
+    "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj": {}
   },
   "projects": {
-    "E:\\4F\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj": {
+    "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\4F\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+        "projectUniqueName": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
         "projectName": "LamborghiniAuto",
-        "projectPath": "E:\\4F\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
-        "packagesPath": "C:\\Users\\Studente\\.nuget\\packages\\",
-        "outputPath": "E:\\4F\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
+        "projectPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+        "packagesPath": "C:\\Users\\ricky\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Studente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

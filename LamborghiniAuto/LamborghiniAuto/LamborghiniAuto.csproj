@@ -6,20 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\img\AventadorSVJ.JPG" />
-    <None Include="wwwroot\img\IMG_3362.JPG" />
-    <None Include="wwwroot\img\IMG_3363.JPG" />
-    <None Include="wwwroot\img\IMG_3364.JPG" />
-    <None Include="wwwroot\img\Urus.JPG" />
-    <None Include="wwwroot\img\IMG_3366.JPG" />
-    <None Include="wwwroot\img\IMG_3367.JPG" />
-    <None Include="wwwroot\img\CountachLP800.JPG" />
-    <None Include="wwwroot\img\IMG_3369.PNG" />
-    <None Include="wwwroot\img\IMG_3370.WEBP" />
-    <None Include="wwwroot\img\IMG_3371.JPG" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
