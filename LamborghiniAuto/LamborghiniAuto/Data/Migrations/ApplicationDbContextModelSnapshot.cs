@@ -19,6 +19,32 @@ namespace LamborghiniAuto.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("LamborghiniAuto.Models.Auto", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("Clienteid")
+                        .HasColumnType("int");
+
+                    b.Property<string>("info")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("modello")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("prezzo")
+                        .HasColumnType("float");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("Clienteid");
+
+                    b.ToTable("Auto");
+                });
+
             modelBuilder.Entity("LamborghiniAuto.Models.Persona", b =>
                 {
                     b.Property<int>("id")
@@ -246,6 +272,13 @@ namespace LamborghiniAuto.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("LamborghiniAuto.Models.Cliente", b =>
+                {
+                    b.HasBaseType("LamborghiniAuto.Models.Persona");
+
+                    b.HasDiscriminator().HasValue("Cliente");
+                });
+
             modelBuilder.Entity("LamborghiniAuto.Models.Dipendente", b =>
                 {
                     b.HasBaseType("LamborghiniAuto.Models.Persona");
@@ -257,6 +290,13 @@ namespace LamborghiniAuto.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Dipendente");
+                });
+
+            modelBuilder.Entity("LamborghiniAuto.Models.Auto", b =>
+                {
+                    b.HasOne("LamborghiniAuto.Models.Cliente", null)
+                        .WithMany("auto")
+                        .HasForeignKey("Clienteid");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

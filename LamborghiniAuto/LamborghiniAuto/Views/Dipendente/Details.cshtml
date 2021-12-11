@@ -1,15 +1,15 @@
 ﻿@model LamborghiniAuto.Models.Dipendente
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Dettagli";
 }
 
-<h1>Details</h1>
+<h1 class="text-white">Dettagli</h1>
 
 <div>
-    <h4>Dipendente</h4>
+    <h4 class="text-white">Dipendente</h4>
     <hr />
-    <dl class="row">
+    <dl class="row text-white">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.stipendio)
         </dt>
@@ -38,11 +38,12 @@
             @Html.DisplayNameFor(model => model.dataNascita)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.dataNascita)
+            @{string data = Model.dataNascita.ToShortDateString();} 
+            @Html.DisplayFor(model => data)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.id">Modifica</a> |
+    <a asp-action="Index">Ritorna alla lista</a>
 </div>

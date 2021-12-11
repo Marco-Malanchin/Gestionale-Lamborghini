@@ -4,28 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-white">Dipendenti</h1>
 
 <p>
-    <a asp-action="AggiuntaDipendente">Create New</a>
+    <a asp-action="AggiuntaDipendente">Assumi</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.stipendio)
+                <p class="text-white">@Html.DisplayNameFor(model => model.stipendio)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.mestiere)
+                <p class="text-white">@Html.DisplayNameFor(model => model.mestiere)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nome)
+                <p class="text-white">@Html.DisplayNameFor(model => model.nome)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cognome)
+                <p class="text-white">@Html.DisplayNameFor(model => model.cognome)</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.dataNascita)
+                <p class="text-white">@Html.DisplayNameFor(model => model.dataNascita)</p>
             </th>
             <th></th>
         </tr>
@@ -34,19 +34,23 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.stipendio)
+                <p class="text-white">@Html.DisplayFor(modelItem => item.stipendio)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.mestiere)
+                <p class="text-white">@Html.DisplayFor(modelItem => item.mestiere)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nome)
+                <p class="text-white">@Html.DisplayFor(modelItem => item.nome)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cognome)
+                <p class="text-white">@Html.DisplayFor(modelItem => item.cognome)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.dataNascita)
+                <p class="text-white">
+                @{
+                    string data = item.dataNascita.ToShortDateString();
+                }
+                @Html.DisplayFor(modelItem => data)</p>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |

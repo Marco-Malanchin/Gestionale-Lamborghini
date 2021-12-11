@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LamborghiniAuto.Models.Auto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Aggiungi Auto</a>
+</p>
+<table class="table text-white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.modello)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prezzo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.info)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.modello)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prezzo) $
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.info)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                <a asp-action="MostraInfo" asp-route-id="@item.id">Dettagli</a> |
+                <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

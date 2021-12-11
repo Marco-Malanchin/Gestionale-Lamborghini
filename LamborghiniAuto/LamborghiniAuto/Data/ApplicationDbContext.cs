@@ -15,5 +15,7 @@ namespace LamborghiniAuto.Data
         }
         public DbSet<LamborghiniAuto.Models.Persona> Persona { get; set; }
         public DbSet<LamborghiniAuto.Models.Dipendente> Dipendente { get; set; }
+        public DbSet<LamborghiniAuto.Models.Auto> Auto { get; set; }
+        public DbSet<LamborghiniAuto.Models.Cliente> Cliente { get; set; }
     }
 }

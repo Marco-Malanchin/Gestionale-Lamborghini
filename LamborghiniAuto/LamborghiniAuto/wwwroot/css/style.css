@@ -78,3 +78,19 @@ body {
 header {
     background-color: #222;
 }
+
+.lambo{
+    font-family: la_macchinaregular, sans-serif;
+}
+
+@font-face {
+    font-family: 'la_macchinaregular';
+    src: url('/fonts/la_macchina-webfont.woff2') format('woff2'),
+         url('/fonts/la_macchina-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.row, h1, h4, h2, p{
+    color: white;
+}

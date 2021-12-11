@@ -1,0 +1,43 @@
+﻿@model LamborghiniAuto.Models.Cliente
+
+@{
+    ViewData["Title"] = "AggiungiCliente";
+}
+
+<h1>Aggiungi Cliente</h1>
+
+<h4 class="text-white">Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4 text-white">
+        <form asp-action="AggiuntaCliente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cognome" class="control-label"></label>
+                <input asp-for="cognome" class="form-control" />
+                <span asp-validation-for="cognome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataNascita" class="control-label"></label>
+                <input asp-for="dataNascita" class="form-control" />
+                <span asp-validation-for="dataNascita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Ritorna alla lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

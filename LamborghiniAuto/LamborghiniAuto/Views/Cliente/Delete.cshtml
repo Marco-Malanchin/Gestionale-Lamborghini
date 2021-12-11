@@ -1,0 +1,39 @@
+﻿@model LamborghiniAuto.Models.Cliente
+
+@{
+    ViewData["Title"] = "EliminaCliente";
+}
+
+<h1 class="text-white">Elimina Cliente</h1>
+
+<h3 class="text-white">Sei sicuro di voler eliminare questo cliente?</h3>
+<div>
+    <h4 class="text-white">Cliente</h4>
+    <hr />
+    <dl class="row text-white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cognome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cognome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dataNascita)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dataNascita)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Ritorna Alla lista</a>
+    </form>
+</div>
