@@ -18,6 +18,11 @@ namespace LamborghiniAuto.Controllers
             _logger = logger;
         }
 
+        public IActionResult Catalogo()
+        {
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();

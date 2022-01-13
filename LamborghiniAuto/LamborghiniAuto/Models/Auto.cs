@@ -10,6 +10,7 @@ namespace LamborghiniAuto.Models
         public int id { get; set; }
         public string modello { get; set; }
         public double prezzo { get; set; }
+        public int potenza { get; set; }
         public string info { get; set; }
         public Auto()
         {
