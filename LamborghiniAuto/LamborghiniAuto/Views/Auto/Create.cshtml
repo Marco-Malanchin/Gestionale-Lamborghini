@@ -32,9 +32,15 @@
                 <input asp-for="info" class="form-control" />
                 <span asp-validation-for="info" class="text-danger"></span>
             </div>
-            <!--<div class="form-group">
-                <input type="file" />
-            </div>-->
+            <div class="form-group">
+                <label asp-for="PezziVenduti" class="control-label"></label>
+                <input asp-for="PezziVenduti" class="form-control" />
+                <span asp-validation-for="PezziVenduti" class="text-danger"></span>
+            </div><div class="form-group">
+                <label asp-for="pezziDisponibili" class="control-label"></label>
+                <input asp-for="pezziDisponibili" class="form-control" />
+                <span asp-validation-for="pezziDisponibili" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

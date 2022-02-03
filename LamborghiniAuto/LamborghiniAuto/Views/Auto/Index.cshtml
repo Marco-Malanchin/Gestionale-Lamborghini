@@ -24,6 +24,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.potenza) (cv)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PezziVenduti)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pezziDisponibili)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,6 +47,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.potenza)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PezziVenduti)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pezziDisponibili)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |

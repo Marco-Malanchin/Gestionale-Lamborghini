@@ -1,0 +1,74 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "Sián Roadster";
+}
+<nav id="navbar-example2" class="navbar navbar-dark bg-warning px-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#esterni">Esterni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#interni">Interni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#schedaTecnica">Scheda Tecnica</a></b>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h4 class="testoCat" id="esterni">
+        Esterni
+    </h4>
+    <h6 class="testoCat">
+        Il Design DNA di Lamborghini è portato ai suoi massimi livelli: ispirata dalla Countach, la Sián FKP 37 ha linee taglienti, eleganza aerodinamica e una silhouette inconfondibile.
+        La carrozzeria, completamente in fibra di carbonio, lascia senza fiato. Il tetto elettrocromico e le superfici mobili comandate da materiali intelligenti sono scolpiti da linee innovative. Le luci anteriori, ispirate dalla Terzo Millennio, lasciano un’indelebile firma luminosa che darà forma al futuro design Lamborghini.
+    </h6>
+    <img class="mw-100" src="/img/sian/Lamborghini_Sian_Roadster_esterni.jpg" alt="Lamborghini Sián Roadster" />
+</div>
+
+
+
+<div class="container">
+    <h4 class="testoCat" id="interni">
+        Interni
+    </h4>
+    <h6 class="testoCat">
+        All’interno della Lamborghini Sián FKP 37, il lusso dell'artigianalità italiana incontra tecnologia e comfort. Gli interni, infatti, sono studiati per l’esperienza di guida migliore possibile: un’adrenalinica e allo stesso tempo confortevole sensazione di accelerazione. Anche gli elementi ricorrenti di Lamborghini caratterizzano l’abitacolo: lo stilema della Y, l’esagono e l’attenzione minuziosa alla perfezione dei dettagli.
+    </h6>
+    <img class="mw-100" src="/img/sian/lamborghini-sian-interior.jpg" alt="Lamborghini Sián Roadster">
+</div>
+
+<div class="container">
+    <h4 class="testoCat" id="schedaTecnica">Scheda Tecnica</h4>
+    <table class="table text-white">
+        <tbody>
+            <tr>
+                <td>Cilindrata</td>
+                <td>6.498 cm³</td>
+            </tr>
+            <tr>
+                <td>Potenza</td>
+                <td>602 kW / 819 CV</td>
+            </tr>
+            <tr>
+                <td>Velocità massima</td>
+                <td>>350 km/h</td>
+            </tr>
+            <tr>
+                <td>Accelerazione 0-100KM/H (MPH 0- 62)</td>
+                <td>2,9 s</td>
+            </tr>
+            <tr>
+                <td>Consumo combinato</td>
+                <td>18,5l/100km</td>
+            </tr>
+            <tr>
+                <td>Emissioni CO2 Combinate</td>
+                <td>447 g/km</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="Auto" asp-action="Preventivo" asp-route-id="@Model.id">Preventivo</a>
+</div>

@@ -107,3 +107,9 @@ header {
 .testo{
     margin-left: 20px;
 }
+
+.testoCat{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: white
+}

@@ -25,19 +25,36 @@ namespace LamborghiniAuto.Controllers
             return View(await _context.Auto.ToListAsync());
         }
 
+        public async Task<IActionResult> Preventivo(int? id)
+        {
+            if (id == null)
+            {
+                return View("Errore");
+            }
+
+            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
+            if (auto == null)
+            {
+                return View("Errore");
+            }
+
+            return View(auto);
+        }
+        
+
         // GET: Auto/Details/5
         public async Task<IActionResult> MostraInfo(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Errore");
             }
 
             var auto = await _context.Auto
                 .FirstOrDefaultAsync(m => m.id == id);
             if (auto == null)
             {
-                return NotFound();
+                return View("Errore");
             }
 
             return View(auto);
@@ -54,7 +71,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,modello,prezzo,potenza,info")] Auto auto)
+        public async Task<IActionResult> Create([Bind("id,modello,prezzo,potenza,info,pezziVenduti,pezziDisponibili")] Auto auto)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +103,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,modello,prezzo,potenza,info")] Auto auto)
+        public async Task<IActionResult> Edit(int id, [Bind("id,modello,prezzo,potenza,info,pezziVenduti,pezziDisponibili")] Auto auto)
         {
             if (id != auto.id)
             {

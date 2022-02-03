@@ -1,0 +1,76 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "STO";
+}
+<nav id="navbar-example2" class="navbar navbar-dark bg-warning px-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#esterni">Esterni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#interni">Interni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#schedaTecnica">Scheda Tecnica</a></b>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <h4 class="testoCat" id="esterni">
+        Esterni
+    </h4>
+    <h6 class="testoCat">
+        Un approccio con materiali leggeri e un design funzionale si uniscono per esprimere prestazioni assolute.
+        Anche se ricorda le linee della Super Trofeo EVO, la Huracán STO mostra un profilo completamente modificato che ottimizza l’aerodinamica della vettura ed è dotata di pannelli della carrozzeria composti per oltre il 75% da fibra di carbonio. Si distingue in particolare il “cofango”, un elemento progettato appositamente che integra il cofano e i parafanghi anteriori per ottimizzare le prestazioni aerodinamiche del lato frontale e ridurre il peso.
+        L’effetto complessivo? L’emozione immediata della corsa su pista.
+    </h6>
+
+    <img class="mw-100" src="~/img/huracan/STO ESTERNI.jpg" alt="Lamborghini Huracan" />
+</div>
+
+
+
+<div class="container">
+    <h4 class="testoCat" id="interni">
+        Interni
+    </h4>
+    <h6 class="testoCat">
+        Gli interni seguono lo stesso approccio di leggerezza: sono completamente realizzati con materiali di alta qualità, fibra di carbonio in particolare. Presente nei pannelli delle porte, nei dettagli interni, nei sedili e nei tappetini, questo materiale innovativo ed esclusivo offre uno stile supersportivo perfettamente in linea con le eleganti rifiniture in Alcantara® e Carbon Skin® della vettura, per un tripudio di prestazioni e funzionalità.
+        Anche se ricordano la Huracán EVO, le soluzioni per gli interni della nuova Huracán STO contribuiscono a una riduzione complessiva del peso rispetto al modello precedente e, insieme a caratteristiche aggiuntive come nuove finiture e una barra antirollio in titanio con cinture a 4 punti**, il risultato finale è una personalità davvero sportiva pronta a offrire emozioni uniche dal momento in cui ti metterai al volante.
+    </h6>
+    <img class="mw-100" src="~/img/huracan/lamborghini-huracan-sto-2021-08_04.jpg" alt="lamborghini Huracan">
+</div>
+
+<div class="container">
+    <h4 class="testoCat" id="schedaTecnica">Scheda Tecnica</h4>
+    <table class="table text-white">
+        <tbody>
+            <tr>
+                <td>Cilindrata</td>
+                <td>5204 cm³</td>
+            </tr>
+            <tr>
+                <td>Potenza</td>
+                <td>470 kW / 640 CV</td>
+            </tr>
+            <tr>
+                <td>Velocità massima</td>
+                <td>310 km/h</td>
+            </tr>
+            <tr>
+                <td>Accelerazione 0-100KM/H (MPH 0- 62)</td>
+                <td>3,0 s</td>
+            </tr>
+            <tr>
+                <td>Consumo combinato</td>
+                <td>13,9 l/100Km</td>
+            </tr>
+            <tr>
+                <td>Emissioni CO2 Combinate</td>
+                <td>331 g/km</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="Auto" asp-action="Preventivo" asp-route-id="@Model.id">Preventivo</a>
+</div>

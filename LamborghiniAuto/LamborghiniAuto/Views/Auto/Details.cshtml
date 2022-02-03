@@ -1,0 +1,48 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "Dettagli";
+}
+
+<h1 class="text-white">Dettagli</h1>
+
+<div>
+    <h4 class="text-warning">Auto</h4>
+    <hr />
+    <dl class="row text-white">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.modello)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.modello)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.prezzo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.prezzo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.info)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.info)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PezziVenduti)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PezziVenduti)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pezziDisponibili)
+        </dd>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pezziDisponibili)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Modifica</a> |
+    <a asp-action="Index">Torna alla lista</a>
+</div>

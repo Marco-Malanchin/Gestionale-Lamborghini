@@ -1,0 +1,72 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "Urus";
+}
+<nav id="navbar-example2" class="navbar navbar-dark bg-warning px-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#esterni">Esterni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#interni">Interni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#schedaTecnica">Scheda Tecnica</a></b>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h4 class="testoCat" id="esterni">
+        Esterni
+    </h4>
+    <h6 class="testoCat">
+        Emblema di massima libertà, Urus ti consente di esplorare qualsiasi terreno, dall'asfalto alla sabbia, passando per il ghiaccio e lo sterrato. È una supersportiva a 360° pur vestendo i panni di un SUV. Mentre esplorerai nuovi percorsi, troverai nuovi modi per esprimere la tua personalità, ti avventurerai in nuove sfide e vivrai al massimo senza temere di spingerti troppo oltre. Non smettere mai di sorprenderti e di vivere la realtà oltre i limiti. Affronta ogni strada, libera la tua personalità.
+    </h6>
+    <img class="mw-100" src="~/img/urus/UrusGialla.jpg" alt="Lamborghini Urus" />
+</div>
+
+
+<div class="container">
+    <h4 class="testoCat" id="interni">
+        Interni
+    </h4>
+    <h6 class="testoCat">
+        Artigianalità di lusso e tecnologia all’avanguardia sono i tratti distintivi degli interni che, per la prima volta su Urus, offrono sedili bicolore ventilati in Alcantara che riprendono il colore dell'esterno: Verde Faunus, Arancio Leonis e Giallo Taurus. Dettagli come la tradizionale Q-citura ad esagono, i ricami dedicati, il Carbon Package ridotto e gli inserti in alluminio nero anodizzato, contribuiscono ulteriormente all'eleganza.
+    </h6>
+    <img class="mw-100" src="~/img/urus/Lamborghini-Urus-interni-Capsule-2.jpg" alt="lamborghini Urus">
+</div>
+
+<div class="container">
+    <h4 class="testoCat" id="schedaTecnica">Scheda Tecnica</h4>
+    <table class="table text-white">
+        <tbody>
+            <tr>
+                <td>Cilindrata</td>
+                <td>3996 cm³</td>
+            </tr>
+            <tr>
+                <td>Potenza</td>
+                <td>478 kW / 650 CV</td>
+            </tr>
+            <tr>
+                <td>Velocità massima</td>
+                <td>>305 km/h</td>
+            </tr>
+            <tr>
+                <td>Accelerazione 0-100KM/H (MPH 0- 62)</td>
+                <td>3,6 s</td>
+            </tr>
+            <tr>
+                <td>Consumo combinato</td>
+                <td>12,7l/100Km</td>
+            </tr>
+            <tr>
+                <td>Emissioni CO2 Combinate</td>
+                <td>325 g/km</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-controller="Auto" asp-action="Preventivo" asp-route-id="@Model.id">Preventivo</a>
+</div>

@@ -29,11 +29,17 @@ namespace LamborghiniAuto.Data.Migrations
                     b.Property<int?>("Clienteid")
                         .HasColumnType("int");
 
+                    b.Property<int>("PezziVenduti")
+                        .HasColumnType("int");
+
                     b.Property<string>("info")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("modello")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("pezziDisponibili")
+                        .HasColumnType("int");
 
                     b.Property<int>("potenza")
                         .HasColumnType("int");

@@ -4872,7 +4872,7 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "/Al0BqkWlq5bqmpKsIfEU5kR3alFAFQtQO9B9d+dulYqXw9E0JygYy2WOott/CzSURm4YL8pJzUaMWDcYtjxoQ==",
+      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
@@ -4910,7 +4910,7 @@
       ]
     },
     "System.Collections.Specialized/4.3.0": {
-      "sha512": "AU1yIXq3/CIGTMOiacB0w7PLIPaXL9XR6/BTyGlFAWQNFUO3lm2s3S/TecDKHR5BjXQHjsHt0O17D69YWTWU8g==",
+      "sha512": "Epx8PoVZR0iuOnJJDzp7pWvdfMMOAvpUo95pC4ScH2mJuXkKA2Y4aR3cG9qt2klHgSons1WFh4kcGW7cSXvrxg==",
       "type": "package",
       "path": "system.collections.specialized/4.3.0",
       "files": [
@@ -5095,7 +5095,7 @@
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
-      "sha512": "lth1bw+ftXgcT9bIKsKKZjPZVCgXgo5PQ+U91/kj5vWwPqQkiYKqmK66YwJXBPQEv/tIjSUkaQlE8V9jtmlSuQ==",
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
       "type": "package",
       "path": "system.componentmodel.primitives/4.3.0",
       "files": [
@@ -5133,7 +5133,7 @@
       ]
     },
     "System.ComponentModel.TypeConverter/4.3.0": {
-      "sha512": "T/mQrF5OSr3wsvkgjimoF1FWksar3rlanwhz1Iqulp614r6IwCyYeXmDLUadk2ajzeKjpm6V0C/SY94vuKGX3g==",
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
       "type": "package",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "files": [
@@ -7476,7 +7476,7 @@
       ]
     },
     "System.Runtime.Serialization.Primitives/4.3.0": {
-      "sha512": "n0Jl81wRIXGQrHKET+z4kxIcK/h7yj39+CcB0BDjg0cS+e/GsoRXN++Cj2G+5MhVlMP286fm3ZL+4Ke1LiN9tA==",
+      "sha512": "Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "type": "package",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "files": [
@@ -8766,19 +8766,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Studente\\.nuget\\packages\\": {}
+    "C:\\Users\\ricky\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Studente\\Desktop\\Gestionale-Lamborghini\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+      "projectUniqueName": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
       "projectName": "LamborghiniAuto",
-      "projectPath": "C:\\Users\\Studente\\Desktop\\Gestionale-Lamborghini\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
-      "packagesPath": "C:\\Users\\Studente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Studente\\Desktop\\Gestionale-Lamborghini\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
+      "projectPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+      "packagesPath": "C:\\Users\\ricky\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Studente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ricky\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8849,7 +8853,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

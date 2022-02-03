@@ -1,0 +1,76 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "Aventador SVJ";
+}
+<nav id="navbar-example2" class="navbar navbar-dark bg-warning px-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#esterni">Esterni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#interni">Interni</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link text-dark" href="#schedaTecnica">Scheda Tecnica</a></b>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <h4 class="testoCat" id="esterni">
+        Esterni
+    </h4>
+    <h6 class="testoCat">
+        Materiali ultraleggeri, orientati alle massime prestazioni, al servizio di un design mozzafiato.
+        Profili aerodinamici accentuati, l’anteriore interamente ridisegnato, le minigonne laterali più estese, l’ala posteriore con forma ad omega e un impianto di scarico più leggero e alto, si innestano nella carrozzeria in leggerissima fibra di carbonio.
+        Un’edizione speciale prodotta in soli 63 esemplari, chiamata SVJ 63 e dotata di colore e finiture esclusive, mette in evidenza l’ampio uso della fibra di carbonio.
+    </h6>
+    <img class="mw-100" src="~/img/Aventador/aventador_svj_est.jpg" alt="Lamborghini Aventador" />
+</div>
+
+
+
+<div class="container">
+    <h4 class="testoCat" id="interni">
+        Interni
+    </h4>
+    <h6 class="testoCat">
+        L’aspetto tecnologico della fibra di carbonio, presente nel monoscocca e ripreso nelle portiere, nei sedili, sul tunnel centrale e sulla console, convive con un design d’ispirazione aeronautica, in cui la pelle e l’Alcantara dei rivestimenti donano ai lussuosi interni un tocco più grintoso.
+        Ma sono i dettagli raffinati delle cuciture incrociate e la targhetta interna SVJ a rendere unico il carattere di questo nuovo gioiello di meccanica.
+    </h6>
+    <img class="mw-100" src="/img/Aventador/aventador_svj_inte.jpg" alt="lamborghini aventador">
+</div>
+
+<div class="container">
+    <h4 class="testoCat" id="schedaTecnica">Scheda Tecnica</h4>
+    <table class="table text-white">
+        <tbody>
+            <tr>
+                <td>Cilindrata</td>
+                <td>6498 cm³</td>
+            </tr>
+            <tr>
+                <td>Potenza</td>
+                <td>566 kW / 770 CV</td>
+            </tr>
+            <tr>
+                <td>Velocità massima</td>
+                <td>>350 km/h</td>
+            </tr>
+            <tr>
+                <td>Accelerazione 0-100KM/H (MPH 0- 62)</td>
+                <td>2,8 s</td>
+            </tr>
+            <tr>
+                <td>Consumo combinato</td>
+                <td>18,0l/100Km</td>
+            </tr>
+            <tr>
+                <td>Emissioni CO2 Combinate</td>
+                <td>448 g/km</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a asp-controller="Auto" asp-action="Preventivo" asp-route-id="@Model.id">Preventivo</a>
+</div>
