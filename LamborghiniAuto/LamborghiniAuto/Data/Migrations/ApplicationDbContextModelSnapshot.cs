@@ -81,6 +81,51 @@ namespace LamborghiniAuto.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("Persona");
                 });
 
+            modelBuilder.Entity("LamborghiniAuto.Models.Preventivo", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("cognomeCl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("nomeCl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("numeroCl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Preventivo");
+                });
+
+            modelBuilder.Entity("LamborghiniAuto.Models.Vendita", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("cognome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("dataVendita")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idMacchina")
+                        .HasColumnType("int");
+
+                    b.Property<string>("nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Vendita");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

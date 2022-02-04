@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -40,7 +41,6 @@ namespace LamborghiniAuto.Controllers
 
             return View(auto);
         }
-        
 
         // GET: Auto/Details/5
         public async Task<IActionResult> MostraInfo(int? id)

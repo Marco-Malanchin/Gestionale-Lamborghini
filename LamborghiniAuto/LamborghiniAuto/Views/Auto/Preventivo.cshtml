@@ -7,18 +7,19 @@
 <div>
     <h2>Preventivo @Model.modello</h2>
     <br />
-    <form>
-        <label class="text-white" for="nomeCliente">Nome</label>
-        <input type="text" name="nomeCliente" class="form-control" />
-        <label for="cognomeCliente" class="text-white">Cognome</label>
-        <input type="text" class="form-control" name="cognomeCliente"/>
-        <label for="CF" class="text-white">Codice Fiscale</label>
-        <input type="text" class="form-control" name="CF"/>
-        <label for="numeroCliente" class="text-white">Numero di telefono</label>
-        <input type="number" class="form-control" name="numeroCliente"/>
+    <form asp-controller="Preventivi"asp-action="Create">
+        <label class="text-white" for="nomeCl">Nome</label>
+        <input type="text" name="nomeCl" class="form-control" />
+        <label for="cognomeCl" class="text-white">Cognome</label>
+        <input type="text" class="form-control" name="cognomeCl"/>
+        <label for="numeroCl" class="text-white">Numero di telefono</label>
+        <input type="number" class="form-control" name="numeroCl"/>
+        <br />
+        <input type="submit" class="btn btn-primary"/>
     </form>
 
     <br /><p>Modello: @Model.modello</p><br />
+    <br /><p>Modello: @Model.potenza</p><br />
     <p>Prezzo: @Model.prezzo €</p>
 
 </div>

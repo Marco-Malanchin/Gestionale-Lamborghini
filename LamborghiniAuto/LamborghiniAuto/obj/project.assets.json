@@ -8772,11 +8772,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+      "projectUniqueName": "C:\\Users\\ricky\\Desktop\\Gestionale-Lamborghini-main\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
       "projectName": "LamborghiniAuto",
-      "projectPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+      "projectPath": "C:\\Users\\ricky\\Desktop\\Gestionale-Lamborghini-main\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
       "packagesPath": "C:\\Users\\ricky\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
+      "outputPath": "C:\\Users\\ricky\\Desktop\\Gestionale-Lamborghini-main\\LamborghiniAuto\\LamborghiniAuto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
