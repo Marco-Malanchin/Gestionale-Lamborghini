@@ -66,6 +66,12 @@ namespace LamborghiniAuto.Controllers
                 ViewBag.Message = "Auto inesistente";
                 return View("Errore");
             }
+            if (vendita.dataVendita > DateTime.Now || vendita.dataVendita.Year < 2010 )
+            {
+                ViewBag.Message = "Data errata";
+                return View("Errore");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(vendita);
@@ -101,6 +107,22 @@ namespace LamborghiniAuto.Controllers
             if (id != vendita.id)
             {
                 return NotFound();
+            }
+
+            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome)))
+            {
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
+            }
+            if (!_context.Auto.Any(a => a.id.Equals(vendita.idMacchina)))
+            {
+                ViewBag.Message = "Auto inesistente";
+                return View("Errore");
+            }
+            if (vendita.dataVendita > DateTime.Now || vendita.dataVendita.Year < 2010)
+            {
+                ViewBag.Message = "Data errata";
+                return View("Errore");
             }
 
             if (ModelState.IsValid)
