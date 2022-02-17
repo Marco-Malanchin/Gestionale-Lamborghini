@@ -54,7 +54,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreaPersona([Bind("id,nome,cognome,dataNascita")] Persona persona)
+        public async Task<IActionResult> CreaPersona([Bind("id,nome,cognome,codFisc,dataNascita")] Persona persona)
         {
             if (ModelState.IsValid)
             {

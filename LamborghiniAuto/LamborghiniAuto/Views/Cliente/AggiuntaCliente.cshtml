@@ -13,18 +13,23 @@
         <form asp-action="AggiuntaCliente">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="nome" class="control-label"></label>
-                <input asp-for="nome" class="form-control" />
+                <label asp-for="nome" autocomplete="off" class="control-label"></label>
+                <input asp-for="nome" autocomplete="off" class="form-control" />
                 <span asp-validation-for="nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cognome" class="control-label"></label>
-                <input asp-for="cognome" class="form-control" />
+                <label asp-for="cognome"  autocomplete="off" class="control-label"></label>
+                <input asp-for="cognome"  autocomplete="off" class="form-control" />
                 <span asp-validation-for="cognome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="dataNascita" class="control-label"></label>
-                <input asp-for="dataNascita" class="form-control" />
+                <label asp-for="codFisc" class="control-label">Codice Fiscale</label>
+                <input asp-for="codFisc" autocomplete="off" class="form-control" />
+                <span asp-validation-for="codFisc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataNascita" autocomplete="off" class="control-label"></label>
+                <input asp-for="dataNascita" autocomplete="off" class="form-control" />
                 <span asp-validation-for="dataNascita" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -12,6 +12,7 @@ namespace LamborghiniAuto.Models
         public int id { get; set; }
         public string nome { get; set; }
         public string cognome { get; set; }
+        public string codFisc { get; set; }
         public DateTime dataVendita { get; set; }
         public int idMacchina { get; set; }
         public Vendita()

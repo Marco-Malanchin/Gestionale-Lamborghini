@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.cognome)
             </th>
             <th>
+                Codice Fiscale
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.dataNascita)
             </th>
             <th></th>
@@ -32,6 +35,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codFisc)
             </td>
             <td>
                 @{ string data = item.dataNascita.ToShortDateString(); }

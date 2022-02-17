@@ -54,9 +54,9 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nome,cognome,dataVendita,idMacchina")] Vendita vendita)
+        public async Task<IActionResult> Create([Bind("id,nome,cognome,codFisc,dataVendita,idMacchina")] Vendita vendita)
         {
-            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome)))
+            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc)))
             {
                 ViewBag.Message = "Cliente inesistente";
                 return View("Errore");
@@ -74,6 +74,18 @@ namespace LamborghiniAuto.Controllers
 
             if (ModelState.IsValid)
             {
+                Auto auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault();
+                Cliente cliente = _context.Cliente.Where(c => c.cognome.Equals(vendita.nome) && c.nome.Equals(vendita.cognome)).FirstOrDefault();
+                if (auto.pezziDisponibili < 1)
+                {
+                    ViewBag.Message = "Macchina non disponibile, pezzi insufficienti";
+                    return View("Errore");
+                }
+                //cliente.auto.Add(auto);
+                auto.pezziDisponibili -= 1;
+                auto.PezziVenduti += 1;
+                //_context.Update(cliente);
+                _context.Update(auto);
                 _context.Add(vendita);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -102,14 +114,14 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,dataVendita,idMacchina")] Vendita vendita)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,dataVendita,codFisc,idMacchina")] Vendita vendita)
         {
             if (id != vendita.id)
             {
                 return NotFound();
             }
 
-            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome)))
+            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc)))
             {
                 ViewBag.Message = "Cliente inesistente";
                 return View("Errore");
@@ -172,6 +184,10 @@ namespace LamborghiniAuto.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var vendita = await _context.Vendita.FindAsync(id);
+            var auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault();
+            auto.pezziDisponibili += 1;
+            auto.PezziVenduti -= 1;
+            _context.Update(auto);
             _context.Vendita.Remove(vendita);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

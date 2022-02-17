@@ -65,6 +65,9 @@ namespace LamborghiniAuto.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("codFisc")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("cognome")
                         .HasColumnType("nvarchar(max)");
 
@@ -108,6 +111,9 @@ namespace LamborghiniAuto.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("codFisc")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("cognome")
                         .HasColumnType("nvarchar(max)");

@@ -54,8 +54,14 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AggiuntaCliente([Bind("id,nome,cognome,dataNascita")] Cliente cliente)
+        public async Task<IActionResult> AggiuntaCliente([Bind("id,nome,cognome,codFisc,dataNascita")] Cliente cliente)
         {
+            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc)))
+            {
+                ViewBag.Message = "Codice fiscale già inserito";
+                return View("Vendite", "Errore");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(cliente);
@@ -86,11 +92,17 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,dataNascita")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,codFisc,dataNascita")] Cliente cliente)
         {
             if (id != cliente.id)
             {
                 return NotFound();
+            }
+
+            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc)))
+            {
+                ViewBag.Message = "Codice fiscale già inserito";
+                return View("Errore");
             }
 
             if (ModelState.IsValid)

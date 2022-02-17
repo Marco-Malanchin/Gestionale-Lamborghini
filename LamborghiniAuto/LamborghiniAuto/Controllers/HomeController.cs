@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using LamborghiniAuto.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -45,6 +46,12 @@ namespace LamborghiniAuto.Controllers
         public IActionResult sian()
         {
             return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Sian")));
+        }
+
+        public IActionResult PersMag()
+        {
+            var tuple = new Tuple<List<Cliente>, List<Auto>, List<Dipendente>>(_context.Cliente.ToList(), _context.Auto.ToList(), _context.Dipendente.ToList());
+            return View(tuple);
         }
 
         public IActionResult Index()

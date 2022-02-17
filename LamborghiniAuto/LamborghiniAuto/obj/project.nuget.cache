@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WAM3P+gqztnvZXqcLtm6RUkX1LC1/890fiKtnGxPkdPpAASM1ICMokbH3D7lhj0GKLDvnZ44R51j2j3nEMlBew==",
+  "dgSpecHash": "6znjtF8hspp0CQnmJ61shZRd8r3pH1orPKS0K1GsPOgMGjjhFjqsbXBLW7R57YiA27V40rz+pmUO0nw7prq+3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ricky\\Desktop\\Gestionale-Lamborghini-main\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
+  "projectFilePath": "C:\\Users\\ricky\\Desktop\\LamborghiniAuto\\LamborghiniAuto\\LamborghiniAuto.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ricky\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.15\\microsoft.aspnetcore.cryptography.internal.3.1.15.nupkg.sha512",
     "C:\\Users\\ricky\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.15\\microsoft.aspnetcore.cryptography.keyderivation.3.1.15.nupkg.sha512",
