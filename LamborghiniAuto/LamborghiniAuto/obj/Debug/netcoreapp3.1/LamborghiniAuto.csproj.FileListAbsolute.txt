@@ -1368,3 +1368,10 @@ C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\R
 C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Vendite\Edit.cshtml.g.cs
 C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Vendite\Errore.cshtml.g.cs
 C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Vendite\Index.cshtml.g.cs
+C:\Users\Studente\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Auto\Ordina.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Auto\Ordina.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Finanze\Create.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Finanze\Delete.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Finanze\Details.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Finanze\Edit.cshtml.g.cs
+C:\Users\ricky\Desktop\LamborghiniAuto\LamborghiniAuto\obj\Debug\netcoreapp3.1\Razor\Views\Finanze\Index.cshtml.g.cs

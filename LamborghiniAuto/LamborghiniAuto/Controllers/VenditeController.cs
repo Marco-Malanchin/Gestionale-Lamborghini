@@ -76,15 +76,16 @@ namespace LamborghiniAuto.Controllers
             {
                 Auto auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault();
                 Cliente cliente = _context.Cliente.Where(c => c.cognome.Equals(vendita.nome) && c.nome.Equals(vendita.cognome)).FirstOrDefault();
+                Finanza finanza = _context.Finanza.Where(c => c.id.Equals(1)).FirstOrDefault();
                 if (auto.pezziDisponibili < 1)
                 {
                     ViewBag.Message = "Macchina non disponibile, pezzi insufficienti";
                     return View("Errore");
                 }
-                //cliente.auto.Add(auto);
                 auto.pezziDisponibili -= 1;
                 auto.PezziVenduti += 1;
-                //_context.Update(cliente);
+                finanza.entrate += auto.prezzo * 0.40;
+                _context.Update(finanza);
                 _context.Update(auto);
                 _context.Add(vendita);
                 await _context.SaveChangesAsync();

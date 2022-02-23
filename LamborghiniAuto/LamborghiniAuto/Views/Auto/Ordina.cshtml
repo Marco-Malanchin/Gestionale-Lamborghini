@@ -1,0 +1,28 @@
+﻿@model LamborghiniAuto.Models.Auto
+
+@{
+    ViewData["Title"] = "Ordina";
+}
+
+<h1>Ordina</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Ordina">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label for="nuoviPezzi" class="control-label">Pezzi da ordinare</label>
+                <input type="number" name="nuoviPezzi" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ordina" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="PersMag">Ritorna al magazzino</a>
+</div>
+

@@ -70,6 +70,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.PezziVenduti)
         </td>
+        <td>
+            <a asp-controller="Auto" asp-action="Ordina" asp-route-id="@item.id">Ordina</a>
+        </td>
     </tr>
     }
     </tbody>

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -40,6 +39,38 @@ namespace LamborghiniAuto.Controllers
             }
 
             return View(auto);
+        }
+
+
+        // GET: Auto/Ordina/id
+        public IActionResult Ordina(int? id)
+        {
+            if (id == null)
+            {
+                return View("Errore");
+            }
+            var auto = _context.Auto.FirstOrDefault(a => a.id == id);
+            if (auto == null)
+            {              
+                return View("Errore");
+            }
+            return View(auto);
+        }
+
+        //POST: Auto/Ordina/id
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Ordina(int id, int nuoviPezzi)
+        {
+            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
+            if (auto == null)
+            {
+                return View("Errore");
+            }
+            auto.pezziDisponibili += nuoviPezzi;
+            _context.Update(auto);
+            _context.SaveChanges();
+            return View();
         }
 
         // GET: Auto/Details/5

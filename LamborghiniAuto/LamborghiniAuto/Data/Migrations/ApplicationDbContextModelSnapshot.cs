@@ -54,6 +54,27 @@ namespace LamborghiniAuto.Data.Migrations
                     b.ToTable("Auto");
                 });
 
+            modelBuilder.Entity("LamborghiniAuto.Models.Finanza", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("entrate")
+                        .HasColumnType("float");
+
+                    b.Property<double>("ricavi")
+                        .HasColumnType("float");
+
+                    b.Property<double>("uscite")
+                        .HasColumnType("float");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Finanza");
+                });
+
             modelBuilder.Entity("LamborghiniAuto.Models.Persona", b =>
                 {
                     b.Property<int>("id")

@@ -19,5 +19,6 @@ namespace LamborghiniAuto.Data
         public DbSet<LamborghiniAuto.Models.Cliente> Cliente { get; set; }
         public DbSet<LamborghiniAuto.Models.Preventivo> Preventivo { get; set; }
         public DbSet<LamborghiniAuto.Models.Vendita> Vendita { get; set; }
+        public DbSet<LamborghiniAuto.Models.Finanza> Finanza { get; set; }
     }
 }
