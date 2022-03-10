@@ -13,6 +13,8 @@ namespace LamborghiniAuto.Models
         public string nome { get; set; }
         public string cognome { get; set; }
         public string codFisc { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime dataNascita { get; set; }
         public Persona()
         {

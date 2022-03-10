@@ -27,9 +27,6 @@
             <th>
                 <p class="text-white">Codice Fiscale</p>
             </th>
-            <th>
-                <p class="text-white">@Html.DisplayNameFor(model => model.dataNascita)</p>
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -50,13 +47,6 @@
             </td>
             <td>
                 <p class="text-white">@Html.DisplayFor(modelItem => item.codFisc)</p>
-            </td>
-            <td>
-                <p class="text-white">
-                @{
-                    string data = item.dataNascita.ToShortDateString();
-                }
-                @Html.DisplayFor(modelItem => data)</p>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |

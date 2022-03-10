@@ -22,11 +22,18 @@ namespace LamborghiniAuto.Controllers
         // GET: Finanze
         public async Task<IActionResult> Index()
         {
+            var finanze = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
+            var dipendenti = await _context.Dipendente.ToListAsync();
+            foreach (var dipendente in dipendenti)
+            {
+                finanze.uscite += dipendente.stipendio * 12;
+            }
+            finanze.ricavi = finanze.entrate - finanze.uscite;
             return View(await _context.Finanza.ToListAsync());
         }
 
         // GET: Finanze/Details/5
-        public async Task<IActionResult> Details(int? id)
+        /*public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -44,7 +51,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Create
-        /*public IActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }

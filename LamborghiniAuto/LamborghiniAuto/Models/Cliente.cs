@@ -9,9 +9,6 @@ namespace LamborghiniAuto.Models
 {
     public class Cliente : Persona
     {
-        [NotMapped]
-        public List<string> acquisti { get; set; }
-        public List<Auto> auto { get; set; }
         public Cliente()
         {
 

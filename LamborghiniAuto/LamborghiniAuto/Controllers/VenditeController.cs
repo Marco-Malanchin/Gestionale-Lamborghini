@@ -84,7 +84,7 @@ namespace LamborghiniAuto.Controllers
                 }
                 auto.pezziDisponibili -= 1;
                 auto.PezziVenduti += 1;
-                finanza.entrate += auto.prezzo * 0.40;
+                finanza.entrate += auto.prezzo * 1.15;
                 _context.Update(finanza);
                 _context.Update(auto);
                 _context.Add(vendita);
@@ -186,8 +186,10 @@ namespace LamborghiniAuto.Controllers
         {
             var vendita = await _context.Vendita.FindAsync(id);
             var auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault();
+            Finanza finanza = _context.Finanza.Where(c => c.id.Equals(1)).FirstOrDefault();
             auto.pezziDisponibili += 1;
             auto.PezziVenduti -= 1;
+            finanza.entrate -= auto.prezzo * 1.15;
             _context.Update(auto);
             _context.Vendita.Remove(vendita);
             await _context.SaveChangesAsync();

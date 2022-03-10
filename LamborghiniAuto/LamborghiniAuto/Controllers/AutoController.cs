@@ -63,12 +63,15 @@ namespace LamborghiniAuto.Controllers
         public async Task<IActionResult> Ordina(int id, int nuoviPezzi)
         {
             var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
+            var finanza = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
             if (auto == null)
             {
                 return View("Errore");
             }
+            finanza.uscite += auto.prezzo;
             auto.pezziDisponibili += nuoviPezzi;
             _context.Update(auto);
+            _context.Update(finanza);
             _context.SaveChanges();
             return View();
         }

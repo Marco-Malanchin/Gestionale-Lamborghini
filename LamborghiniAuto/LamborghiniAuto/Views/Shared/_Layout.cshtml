@@ -15,37 +15,28 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 w-100">
             <div class="container">
                 <a class="" asp-area="" asp-controller="Home" asp-action="Index"><img src="/img/logo.jpg" /></a>
-                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler bg-warning" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-warning" asp-area="" asp-controller="Home" asp-action="Catalogo">Catalogo</a>
+                            <a class="nav-link text-warning navText" asp-area="" asp-controller="Home" asp-action="Catalogo">Catalogo</a>
                         </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Dipendente" asp-action="Index">Dipendenti</a>
+                                <a class="nav-link text-warning navText" asp-area="" asp-controller="Vendite" asp-action="Index">Vendita</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Cliente" asp-action="Index">Clienti</a>
+                                <a class="nav-link text-warning navText" asp-area="" asp-controller="Finanze" asp-action="Index">Finanze</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Auto" asp-action="Index">Auto</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Vendite" asp-action="Index">Vendita</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Finanze" asp-action="Index">Finanze</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" asp-area="" asp-controller="Home" asp-action="PersMag">Magazzino</a>
+                                <a class="nav-link text-warning navText" asp-area="" asp-controller="Home" asp-action="PersMag">Magazzino e Personale</a>
                             </li>
                         }
                         <partial name="_LoginPartial" />
