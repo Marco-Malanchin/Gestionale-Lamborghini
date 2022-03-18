@@ -33,7 +33,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Details/5
-        /*public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -150,7 +150,7 @@ namespace LamborghiniAuto.Controllers
             _context.Finanza.Remove(finanza);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }*/
+        }
 
         private bool FinanzaExists(int id)
         {

@@ -1,59 +1,70 @@
 ﻿@model IEnumerable<LamborghiniAuto.Models.Vendita>
 
-@{
-    ViewData["Title"] = "Vendite";
-}
+@{ ViewData["Title"] = "Vendite"; }
+
+@{ string [] mesi = { "Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"}; }
 
 <h1>Vendite</h1>
 
 <p>
     <a asp-action="Create">Aggiungi vendita</a>
 </p>
-<table class="table text-white">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cognome)
-            </th>
-            <th>
-                Codice Fiscale
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dataVendita)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.idMacchina)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cognome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codFisc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dataVendita)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.idMacchina)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="event-schedule-area-two bg-color pad100">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="home" role="tabpanel">
+            <div class="table-responsive text-white">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Data</th>
+                            <th scope="col">Auto</th>
+                            <th scope="col">Informazioni</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr class="inner-box">
+                            <th scope="row">
+                                <div class="event-date">
+                                    <span>@item.dataVendita.Day</span>
+                                    <p>@mesi[item.dataVendita.Month - 1] @item.dataVendita.Year</p>
+                                </div>
+                            </th>
+                            <td>
+                                <div class="event-img">
+                                    <!--<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />-->id: @item.idMacchina
+                                </div>
+                            </td>
+                            <td>
+                                <div class="event-wrap">
+                                    <div class="meta">
+                                        <div class="organizers">
+                                            <a href="#">Acquirente: @item.cognome @item.cognome</a>
+                                        </div>
+                                        <div class="categories">
+                                            <a href="#">Codice Fiscale: @item.codFisc</a>
+                                        </div>
+                                        <div>
+                                            <span>Ora: @item.dataVendita.TimeOfDay</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="r-no">
+                                    <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                                    <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

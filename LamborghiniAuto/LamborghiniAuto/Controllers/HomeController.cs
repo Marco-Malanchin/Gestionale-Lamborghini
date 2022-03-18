@@ -33,7 +33,7 @@ namespace LamborghiniAuto.Controllers
         }
         public IActionResult STO ()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("STO")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Huracan")));
         }
         public IActionResult Urus()
         {
