@@ -22,7 +22,15 @@ namespace LamborghiniAuto.Controllers
         // GET: Vendite
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Vendita.ToListAsync());
+            List<string> modelliVendite = new List<string>();
+            List<Vendita> vendite = await _context.Vendita.ToListAsync();
+            foreach (var item in vendite)
+            {
+                Auto auto = _context.Auto.Where(a => a.id == item.idMacchina).FirstOrDefault();
+                modelliVendite.Add(auto.modello);
+            }
+            var tuple = new Tuple<List<Vendita>, List<string>>(vendite, modelliVendite);
+            return View(tuple);
         }
 
         // GET: Vendite/Details/5

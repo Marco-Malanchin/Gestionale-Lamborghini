@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LamborghiniAuto.Models.Vendita>
+﻿@model Tuple<List<LamborghiniAuto.Models.Vendita>, List<string>>
 
 @{ ViewData["Title"] = "Vendite"; }
 
@@ -24,40 +24,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model)
+                        @for (int i = 0; i < Model.Item1.Count(); i++)
                         {
                         <tr class="inner-box">
                             <th scope="row">
                                 <div class="event-date">
-                                    <span>@item.dataVendita.Day</span>
-                                    <p>@mesi[item.dataVendita.Month - 1] @item.dataVendita.Year</p>
+                                    <span>@Model.Item1[i].dataVendita.Day</span>
+                                    <p>@mesi[Model.Item1[i].dataVendita.Month - 1] @Model.Item1[i].dataVendita.Year</p>
                                 </div>
                             </th>
                             <td>
                                 <div class="event-img">
-                                    <!--<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" />-->id: @item.idMacchina
+                                    @{string percorso = $"img/{Model.Item2[i]}.jpg";} 
+                                    <img src=@percorso alt="" />
                                 </div>
                             </td>
                             <td>
                                 <div class="event-wrap">
                                     <div class="meta">
                                         <div class="organizers">
-                                            <a href="#">Acquirente: @item.cognome @item.cognome</a>
+                                            <a href="#">Acquirente: @Model.Item1[i].cognome @Model.Item1[i].cognome</a>
                                         </div>
                                         <div class="categories">
-                                            <a href="#">Codice Fiscale: @item.codFisc</a>
+                                            <a href="#">Codice Fiscale: @Model.Item1[i].codFisc</a>
                                         </div>
                                         <div>
-                                            <span>Ora: @item.dataVendita.TimeOfDay</span>
+                                            <span>Ora: @Model.Item1[i].dataVendita.TimeOfDay</span>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="r-no">
-                                    <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
-                                    <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
+                                    <a asp-action="Edit" asp-route-id="@Model.Item1[i].id">Modifica</a> |
+                                    <a asp-action="Details" asp-route-id="@Model.Item1[i].id">Dettagli</a> |
+                                    <a asp-action="Delete" asp-route-id="@Model.Item1[i].id">Elimina</a>
                                 </div>
                             </td>
                         </tr>
