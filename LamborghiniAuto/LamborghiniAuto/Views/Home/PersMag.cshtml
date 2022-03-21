@@ -24,8 +24,8 @@
     <div class="row">
         @foreach (var item in Model.Item1)
         {
-<div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-white w-50">
-    <div class="job-left my-4 d-md-flex align-items-center flex-wrap col-xl-6 col-md-6 col-12">
+<div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-white col-xl-6 col-md-6 col-12">
+    <div class="job-left my-4 d-md-flex align-items-center flex-wrap w-100">
         <div class="img-holder mr-md-4 mb-md-4 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
             @{ string nomeCogn = $"{item.nome[0]}" + $"{item.cognome[0]}"; }
             @nomeCogn
@@ -53,8 +53,8 @@
     <div class="row">
         @foreach (var item in Model.Item3)
         {
-<div class="job-box d-md-flex align-items-center justify-content-between mb-30 w-50">
-    <div class="job-left my-4 d-md-flex align-items-center flex-wrap text-white col-xl-6 col-md-6 col-12">
+<div class="job-box d-md-flex align-items-center justify-content-between w-50 col-xl-6 col-md-6 col-12">
+    <div class="job-left my-4 d-md-flex align-items-center flex-wrap text-white w-100">
         <div class="img-holder mr-md-4 mb-md-4 mx-auto mx-md-0 d-md-none d-lg-flex">
             @{ string nomeCogn = $"{item.nome[0]}" + $"{item.cognome[0]}"; }
             @nomeCogn
