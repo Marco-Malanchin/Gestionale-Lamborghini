@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -20,12 +21,14 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Cliente
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Cliente.ToListAsync());
         }
 
         // GET: Cliente/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +47,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Cliente/Create
+        [Authorize]
         public IActionResult AggiuntaCliente()
         {
             return View();
@@ -54,6 +58,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> AggiuntaCliente([Bind("id,nome,cognome,codFisc,dataNascita")] Cliente cliente)
         {
             if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc)))
@@ -72,6 +77,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Cliente/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -91,6 +97,7 @@ namespace LamborghiniAuto.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,codFisc,dataNascita")] Cliente cliente)
         {
@@ -131,6 +138,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Cliente/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,6 +159,7 @@ namespace LamborghiniAuto.Controllers
         // POST: Cliente/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cliente = await _context.Cliente.FindAsync(id);

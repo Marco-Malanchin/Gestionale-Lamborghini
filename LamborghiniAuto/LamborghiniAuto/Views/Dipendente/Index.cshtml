@@ -1,59 +1,50 @@
 ﻿@model IEnumerable<LamborghiniAuto.Models.Dipendente>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1 class="text-white">Dipendenti</h1>
 
 <p>
     <a asp-action="AggiuntaDipendente">Assumi</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <p class="text-white">@Html.DisplayNameFor(model => model.stipendio)</p>
-            </th>
-            <th>
-                <p class="text-white">@Html.DisplayNameFor(model => model.mestiere)</p>
-            </th>
-            <th>
-                <p class="text-white">@Html.DisplayNameFor(model => model.nome)</p>
-            </th>
-            <th>
-                <p class="text-white">@Html.DisplayNameFor(model => model.cognome)</p>
-            </th>
-            <th>
-                <p class="text-white">Codice Fiscale</p>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <p class="text-white">@Html.DisplayFor(modelItem => item.stipendio)</p>
-            </td>
-            <td>
-                <p class="text-white">@Html.DisplayFor(modelItem => item.mestiere)</p>
-            </td>
-            <td>
-                <p class="text-white">@Html.DisplayFor(modelItem => item.nome)</p>
-            </td>
-            <td>
-                <p class="text-white">@Html.DisplayFor(modelItem => item.cognome)</p>
-            </td>
-            <td>
-                <p class="text-white">@Html.DisplayFor(modelItem => item.codFisc)</p>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
-                <a asp-action="Licenzia" asp-route-id="@item.id">Licenzia</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+<div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-white col-xl-6 col-md-6 col-12">
+    <div class="job-left my-4 d-md-flex align-items-center flex-wrap w-100">
+        <div class="img-holder mr-md-4 mb-md-4 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+            @{ string nomeCogn = $"{item.nome[0]}" + $"{item.cognome[0]}"; }
+            @nomeCogn
+        </div>
+        <div class="job-content">
+            <h5 class="text-center text-md-left">@item.nome @item.cognome</h5>
+            <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans pl-0">
+                <li class="mr-md-3">
+                    @item.codFisc
+                </li>
+                <li class="mr-md-3">
+                    @item.dataNascita.ToShortDateString()
+                </li>
+                <li class="mr-md-3">
+                    @item.mestiere
+                </li>
+                <li class="mr-md-3">
+                    @item.stipendio €
+                </li>
+                <li>
+                    <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>}
+    </div>
+</div>
+
+
+
+

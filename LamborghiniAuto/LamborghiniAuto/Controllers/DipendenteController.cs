@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
@@ -20,12 +20,14 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Dipendente
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Dipendente.ToListAsync());
         }
 
         // GET: Dipendente/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,6 +46,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Dipendente/Create
+        [Authorize]
         public IActionResult AggiuntaDipendente()
         {
             return View();
@@ -53,6 +56,7 @@ namespace LamborghiniAuto.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiuntaDipendente([Bind("stipendio,mestiere,id,nome,cognome,codFisc,dataNascita")] Dipendente dipendente)
         {
@@ -72,6 +76,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Dipendente/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +97,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("stipendio,mestiere,id,nome,cognome,codFisc,dataNascita")] Dipendente dipendente)
         {
             if (id != dipendente.id)
@@ -129,6 +135,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Dipendente/Delete/5
+        [Authorize]
         public async Task<IActionResult> Licenzia(int? id)
         {
             if (id == null)
@@ -149,6 +156,7 @@ namespace LamborghiniAuto.Controllers
         // POST: Dipendente/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var dipendente = await _context.Dipendente.FindAsync(id);

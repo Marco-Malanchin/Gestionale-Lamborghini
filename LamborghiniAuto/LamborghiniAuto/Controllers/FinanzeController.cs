@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -20,6 +21,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var finanze = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
@@ -33,6 +35,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -51,6 +54,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -73,6 +77,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +97,7 @@ namespace LamborghiniAuto.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,entrate,uscite,ricavi")] Finanza finanza)
         {
@@ -124,6 +130,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Finanze/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -144,6 +151,7 @@ namespace LamborghiniAuto.Controllers
         // POST: Finanze/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var finanza = await _context.Finanza.FindAsync(id);

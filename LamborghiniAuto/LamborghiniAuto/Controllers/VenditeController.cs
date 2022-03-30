@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -20,10 +20,12 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Vendite
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             List<string> modelliVendite = new List<string>();
             List<Vendita> vendite = await _context.Vendita.ToListAsync();
+            vendite.Reverse();
             foreach (var item in vendite)
             {
                 Auto auto = _context.Auto.Where(a => a.id == item.idMacchina).FirstOrDefault();
@@ -34,6 +36,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Vendite/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -52,6 +55,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Vendite/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -62,6 +66,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("id,nome,cognome,codFisc,dataVendita,idMacchina")] Vendita vendita)
         {
             if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc)))
@@ -103,6 +108,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Vendite/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -123,6 +129,7 @@ namespace LamborghiniAuto.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("id,nome,cognome,dataVendita,codFisc,idMacchina")] Vendita vendita)
         {
             if (id != vendita.id)
@@ -170,6 +177,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Vendite/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -190,6 +198,7 @@ namespace LamborghiniAuto.Controllers
         // POST: Vendite/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var vendita = await _context.Vendita.FindAsync(id);

@@ -35,7 +35,7 @@
                             </th>
                             <td>
                                 <div class="event-img">
-                                    @{string percorso = $"img/{Model.Item2[i]}.jpg";} 
+                                    @{string percorso = $"img/{Model.Item2[i].Replace(" ", "")}.jpg";} 
                                     <img src=@percorso alt="" />
                                 </div>
                             </td>
@@ -43,7 +43,7 @@
                                 <div class="event-wrap">
                                     <div class="meta">
                                         <div class="organizers">
-                                            <a href="#">Acquirente: @Model.Item1[i].cognome @Model.Item1[i].cognome</a>
+                                            <a href="#">Acquirente: @Model.Item1[i].cognome @Model.Item1[i].nome</a>
                                         </div>
                                         <div class="categories">
                                             <a href="#">Codice Fiscale: @Model.Item1[i].codFisc</a>

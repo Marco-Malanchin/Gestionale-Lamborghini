@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LamborghiniAuto.Data;
 using LamborghiniAuto.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LamborghiniAuto.Controllers
 {
@@ -20,6 +21,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Auto
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Auto.ToListAsync());
@@ -43,6 +45,7 @@ namespace LamborghiniAuto.Controllers
 
 
         // GET: Auto/Ordina/id
+        [Authorize]
         public IActionResult Ordina(int? id)
         {
             if (id == null)
@@ -59,13 +62,20 @@ namespace LamborghiniAuto.Controllers
 
         //POST: Auto/Ordina/id
         [ValidateAntiForgeryToken]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Ordina(int id, int nuoviPezzi)
+        public async Task<IActionResult> Ordina(int? id, int nuoviPezzi)
         {
             var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
             var finanza = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
-            if (auto == null)
+            if (auto == null && id == null)
             {
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
+            }
+            if (nuoviPezzi <= 0)
+            {
+                ViewBag.Message = "Inserire un numero maggiore di 0";
                 return View("Errore");
             }
             finanza.uscite += auto.prezzo;
@@ -77,10 +87,12 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Auto/Details/5
+        [Authorize]
         public async Task<IActionResult> MostraInfo(int? id)
         {
             if (id == null)
             {
+                ViewBag.Message = "Macchina inesistente";
                 return View("Errore");
             }
 
@@ -88,6 +100,7 @@ namespace LamborghiniAuto.Controllers
                 .FirstOrDefaultAsync(m => m.id == id);
             if (auto == null)
             {
+                ViewBag.Message = "Macchina inesistente";
                 return View("Errore");
             }
 
@@ -95,6 +108,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Auto/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -104,6 +118,7 @@ namespace LamborghiniAuto.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,modello,prezzo,potenza,info,pezziVenduti,pezziDisponibili")] Auto auto)
         {
@@ -117,6 +132,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Auto/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -136,6 +152,7 @@ namespace LamborghiniAuto.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,modello,prezzo,potenza,info,pezziVenduti,pezziDisponibili")] Auto auto)
         {
@@ -168,6 +185,7 @@ namespace LamborghiniAuto.Controllers
         }
 
         // GET: Auto/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -188,6 +206,7 @@ namespace LamborghiniAuto.Controllers
         // POST: Auto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var auto = await _context.Auto.FindAsync(id);

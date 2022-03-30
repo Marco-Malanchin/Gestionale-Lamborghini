@@ -1,47 +1,41 @@
 ﻿@model IEnumerable<LamborghiniAuto.Models.Cliente>
 
-@{
-    ViewData["Title"] = "Index";
-}
+@{ ViewData["Title"] = "Index"; }
 
 <h1>Clienti</h1>
 
 <p>
     <a asp-action="AggiuntaCliente">Aggiungi Cliente</a>
 </p>
-<table class="table text-white">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.cognome)
-            </th>
-            <th>
-                Codice Fiscale
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cognome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codFisc)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+<div class="job-box d-md-flex align-items-center justify-content-between mb-30 text-white col-xl-6 col-md-6 col-12">
+    <div class="job-left my-4 d-md-flex align-items-center flex-wrap w-100">
+        <div class="img-holder mr-md-4 mb-md-4 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+            @{ string nomeCogn = $"{item.nome[0]}" + $"{item.cognome[0]}"; }
+            @nomeCogn
+        </div>
+        <div class="job-content">
+            <h5 class="text-center text-md-left">@item.nome @item.cognome</h5>
+            <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans pl-0">
+                <li class="mr-md-4">
+                    @item.codFisc
+                </li>
+                <li class="mr-md-4">
+                    @item.dataNascita.ToShortDateString()
+                </li>
+                <li>
+                    <a asp-action="Edit" asp-route-id="@item.id">Modifica</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Dettagli</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Elimina</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>}
+    </div>
+</div>
+
