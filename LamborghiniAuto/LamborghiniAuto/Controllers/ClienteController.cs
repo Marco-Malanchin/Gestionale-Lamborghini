@@ -33,14 +33,16 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
 
             var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.id == id); // Prende il cliente che ha l'id inserito
             if (cliente == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
 
             return View(cliente);
@@ -61,10 +63,10 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> AggiuntaCliente([Bind("id,nome,cognome,codFisc,dataNascita")] Cliente cliente)
         {
-            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc)))
+            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc))) // Se il codice fiscale inserito esiste già, lo controlla facendo una query, andando a controllare se un cliente ha lo stesso CF di quello che è stato inserito
             {
                 ViewBag.Message = "Codice fiscale già inserito";
-                return View("Vendite", "Errore");
+                return View("Errore");
             }
 
             if (ModelState.IsValid)
@@ -82,13 +84,15 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
 
-            var cliente = await _context.Cliente.FindAsync(id);
+            var cliente = await _context.Cliente.FindAsync(id); // Prende il cliente che ha l'id inserito
             if (cliente == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
             return View(cliente);
         }
@@ -103,12 +107,11 @@ namespace LamborghiniAuto.Controllers
         {
             if (id != cliente.id)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente errato";
+                return View("Errore");
             }
 
-
-
-            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc)))
+            if (_context.Cliente.Any(c => c.codFisc.Equals(cliente.codFisc))) // Se il codice fiscale inserito esiste già, lo controlla facendo una query, andando a controllare se un cliente ha lo stesso CF di quello che è stato inserito
             {
                 ViewBag.Message = "Codice fiscale già inserito";
                 return View("Errore");
@@ -125,7 +128,8 @@ namespace LamborghiniAuto.Controllers
                 {
                     if (!ClienteExists(cliente.id))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Cliente inesistente";
+                        return View("Errore");
                     }
                     else
                     {
@@ -143,14 +147,16 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
 
             var cliente = await _context.Cliente
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.id == id); // Viene preso il cliente che ha l'id selezionato
             if (cliente == null)
             {
-                return NotFound();
+                ViewBag.Message = "Cliente inesistente";
+                return View("Errore");
             }
 
             return View(cliente);

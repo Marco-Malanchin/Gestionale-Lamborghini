@@ -24,8 +24,8 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var finanze = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
-            var dipendenti = await _context.Dipendente.ToListAsync();
+            var finanze = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1); // Vengono prese le finanze dal db
+            var dipendenti = await _context.Dipendente.ToListAsync(); // Vengono presi i dipendenti, per poi aggiungere alle uscite gli stipendi di quest'ultimi
             foreach (var dipendente in dipendenti)
             {
                 finanze.uscite += dipendente.stipendio * 12;
@@ -38,7 +38,7 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (id == null) 
             {
                 return NotFound();
             }

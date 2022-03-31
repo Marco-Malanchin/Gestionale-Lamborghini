@@ -19,19 +19,21 @@ namespace LamborghiniAuto.Controllers
             _context = context;
         }
 
+        // [Authorize] --> Deve essere fatto il login
+
         // GET: Vendite
         [Authorize]
         public async Task<IActionResult> Index()
         {
             List<string> modelliVendite = new List<string>();
-            List<Vendita> vendite = await _context.Vendita.ToListAsync();
+            List<Vendita> vendite = await _context.Vendita.ToListAsync(); // Lista che contiene tutte le vendite contenute nel database
             vendite.Reverse();
             foreach (var item in vendite)
             {
-                Auto auto = _context.Auto.Where(a => a.id == item.idMacchina).FirstOrDefault();
-                modelliVendite.Add(auto.modello);
+                Auto auto = _context.Auto.Where(a => a.id == item.idMacchina).FirstOrDefault(); // Viene presa dal database ogni macchina all'interno della vendita tramite una query
+                modelliVendite.Add(auto.modello); // Viene aggiunto alla lista il modello della auto della vendita
             }
-            var tuple = new Tuple<List<Vendita>, List<string>>(vendite, modelliVendite);
+            var tuple = new Tuple<List<Vendita>, List<string>>(vendite, modelliVendite); // Tuple (struttura dati) che contiene una coppia di valori, cioè la lista delle vendite e la lista dei modelli delle auto di ogni vendita 
             return View(tuple);
         }
 
@@ -39,16 +41,18 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (id == null) // Se l'id "inserito" non esiste
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente"; // Messaggio che viene mostrato nella View Errore
+                return View("Errore");
             }
 
             var vendita = await _context.Vendita
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (vendita == null)
+                .FirstOrDefaultAsync(m => m.id == id); // Viene estrapolata dal database la vendita che ha l'id inserito
+            if (vendita == null) // Se la vendita non esiste
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente";
+                return View("Errore");
             }
 
             return View(vendita);
@@ -69,38 +73,38 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("id,nome,cognome,codFisc,dataVendita,idMacchina")] Vendita vendita)
         {
-            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc)))
+            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc))) // Se i campi inseriti nel form della vendita non sono trovati in un determinato cliente
             {
-                ViewBag.Message = "Cliente inesistente";
+                ViewBag.Message = "Cliente inesistente"; // Messaggio che viene mostrato nella View Errore
                 return View("Errore");
             }
-            if (!_context.Auto.Any(a => a.id.Equals(vendita.idMacchina)))
+            if (!_context.Auto.Any(a => a.id.Equals(vendita.idMacchina))) // Se l'auto inserita non corrisponde a nessuna auto, controllo avvenuto attraverso gli id dell'auto della vendita e le auto che sono nel db
             {
-                ViewBag.Message = "Auto inesistente";
+                ViewBag.Message = "Auto inesistente"; // Messaggio che viene mostrato nella View Errore
                 return View("Errore");
             }
             if (vendita.dataVendita > DateTime.Now || vendita.dataVendita.Year < 2010 )
             {
-                ViewBag.Message = "Data errata";
+                ViewBag.Message = "Data errata"; // Messaggio che viene mostrato nella View Errore
                 return View("Errore");
             }
 
             if (ModelState.IsValid)
             {
-                Auto auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault();
-                Cliente cliente = _context.Cliente.Where(c => c.cognome.Equals(vendita.nome) && c.nome.Equals(vendita.cognome)).FirstOrDefault();
+                Auto auto = _context.Auto.Where(a => a.id.Equals(vendita.idMacchina)).FirstOrDefault(); // Viene presa la macchina che è stata inserita nella vendita
+                Cliente cliente = _context.Cliente.Where(c => c.cognome.Equals(vendita.nome) && c.nome.Equals(vendita.cognome)).FirstOrDefault(); // Viene preso il cliente inserito nella vendita
                 Finanza finanza = _context.Finanza.Where(c => c.id.Equals(1)).FirstOrDefault();
                 if (auto.pezziDisponibili < 1)
                 {
-                    ViewBag.Message = "Macchina non disponibile, pezzi insufficienti";
+                    ViewBag.Message = "Macchina non disponibile, pezzi insufficienti"; // Messaggio che viene mostrato nella View Errore
                     return View("Errore");
                 }
                 auto.pezziDisponibili -= 1;
                 auto.PezziVenduti += 1;
                 finanza.entrate += auto.prezzo * 1.15;
                 _context.Update(finanza);
-                _context.Update(auto);
-                _context.Add(vendita);
+                _context.Update(auto); // Aggiornati i nuovi valori
+                _context.Add(vendita); // Aggiunta della vendita
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -113,13 +117,15 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente";
+                return View("Errore");
             }
 
             var vendita = await _context.Vendita.FindAsync(id);
             if (vendita == null)
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente";
+                return View("Errore");
             }
             return View(vendita);
         }
@@ -137,12 +143,12 @@ namespace LamborghiniAuto.Controllers
                 return NotFound();
             }
 
-            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc)))
+            if (!_context.Cliente.Any(c => c.nome.Equals(vendita.nome) && c.cognome.Equals(vendita.cognome) && c.codFisc.Equals(vendita.codFisc))) // Se i campi inseriti nel form della vendita non sono trovati in un determinato cliente
             {
                 ViewBag.Message = "Cliente inesistente";
                 return View("Errore");
             }
-            if (!_context.Auto.Any(a => a.id.Equals(vendita.idMacchina)))
+            if (!_context.Auto.Any(a => a.id.Equals(vendita.idMacchina))) // Se l'auto inserita non corrisponde a nessuna auto, controllo avvenuto attraverso gli id dell'auto della vendita e le auto che sono nel db
             {
                 ViewBag.Message = "Auto inesistente";
                 return View("Errore");
@@ -157,14 +163,15 @@ namespace LamborghiniAuto.Controllers
             {
                 try
                 {
-                    _context.Update(vendita);
+                    _context.Update(vendita); // Vengono aggiornate le modifiche della vendita
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!VenditaExists(vendita.id))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Vendita inesistente";
+                        return View("Errore");
                     }
                     else
                     {
@@ -182,14 +189,16 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente";
+                return View("Errore");
             }
 
             var vendita = await _context.Vendita
                 .FirstOrDefaultAsync(m => m.id == id);
             if (vendita == null)
             {
-                return NotFound();
+                ViewBag.Message = "Vendita inesistente";
+                return View("Errore");
             }
 
             return View(vendita);

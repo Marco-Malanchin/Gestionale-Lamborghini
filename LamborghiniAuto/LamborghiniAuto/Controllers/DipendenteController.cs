@@ -32,14 +32,16 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
 
             var dipendente = await _context.Dipendente
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.id == id); // Viene preso il dipendente che l'id inserito
             if (dipendente == null)
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
 
             return View(dipendente);
@@ -60,7 +62,7 @@ namespace LamborghiniAuto.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AggiuntaDipendente([Bind("stipendio,mestiere,id,nome,cognome,codFisc,dataNascita")] Dipendente dipendente)
         {
-            if (_context.Cliente.Any(c => c.codFisc.Equals(dipendente.codFisc)))
+            if (_context.Cliente.Any(c => c.codFisc.Equals(dipendente.codFisc))) // Se il codice fiscale è esiste già
             {
                 ViewBag.Message = "Codice fiscale già inserito";
                 return View("Errore");
@@ -81,13 +83,15 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
 
-            var dipendente = await _context.Dipendente.FindAsync(id);
+            var dipendente = await _context.Dipendente.FindAsync(id); // Preso il dipendente con l'id inserito
             if (dipendente == null)
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
             return View(dipendente);
         }
@@ -105,7 +109,7 @@ namespace LamborghiniAuto.Controllers
                 return NotFound();
             }
 
-            if (_context.Cliente.Any(c => c.codFisc.Equals(dipendente.codFisc)))
+            if (_context.Cliente.Any(c => c.codFisc.Equals(dipendente.codFisc)))  // Se il codice fiscale è esiste già
             {
                 ViewBag.Message = "Codice fiscale già inserito";
                 return View("Errore");
@@ -115,14 +119,15 @@ namespace LamborghiniAuto.Controllers
             {
                 try
                 {
-                    _context.Update(dipendente);
+                    _context.Update(dipendente); // Aggiornato il db
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!DipendenteExists(dipendente.id))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Dipendente inesistente";
+                        return View("Errore");
                     }
                     else
                     {
@@ -138,16 +143,18 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> Licenzia(int? id)
         {
-            if (id == null)
+            if (id == null) // Se l'id non esiste
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
 
             var dipendente = await _context.Dipendente
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (dipendente == null)
+                .FirstOrDefaultAsync(m => m.id == id); // Preso il dipendente con l'id inserito
+            if (dipendente == null) // Se il dipendente non esiste
             {
-                return NotFound();
+                ViewBag.Message = "Dipendente inesistente";
+                return View("Errore");
             }
 
             return View(dipendente);
@@ -159,8 +166,8 @@ namespace LamborghiniAuto.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var dipendente = await _context.Dipendente.FindAsync(id);
-            _context.Dipendente.Remove(dipendente);
+            var dipendente = await _context.Dipendente.FindAsync(id); // Preso il dipendente con l'id inserito
+            _context.Dipendente.Remove(dipendente); // Viene eliminato il dipendente dal db
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

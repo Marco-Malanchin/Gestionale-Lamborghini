@@ -31,12 +31,14 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
+                ViewBag.Message = "Macchina inesistente";
                 return View("Errore");
             }
 
-            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
+            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id); // Viene presa la macchina che ha l'id passato
             if (auto == null)
             {
+                ViewBag.Message = "Macchina inesistente";
                 return View("Errore");
             }
 
@@ -52,7 +54,7 @@ namespace LamborghiniAuto.Controllers
             {
                 return View("Errore");
             }
-            var auto = _context.Auto.FirstOrDefault(a => a.id == id);
+            var auto = _context.Auto.FirstOrDefault(a => a.id == id); // Viene presa la macchina che ha l'id passato
             if (auto == null)
             {              
                 return View("Errore");
@@ -66,9 +68,9 @@ namespace LamborghiniAuto.Controllers
         [HttpPost]
         public async Task<IActionResult> Ordina(int? id, int nuoviPezzi)
         {
-            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id);
-            var finanza = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1);
-            if (auto == null && id == null)
+            var auto = await _context.Auto.FirstOrDefaultAsync(a => a.id == id); // Viene presa la macchina che ha l'id passato
+            var finanza = await _context.Finanza.FirstOrDefaultAsync(f => f.id == 1); // Viene presa la finanza dal db, dalle uscite di quest'ultima verrà aggiunto il prezzo dell'auto
+            if (auto == null || id == null)
             {
                 ViewBag.Message = "Macchina inesistente";
                 return View("Errore");
@@ -97,7 +99,7 @@ namespace LamborghiniAuto.Controllers
             }
 
             var auto = await _context.Auto
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.id == id); // Viene presa la macchina che ha l'id passato
             if (auto == null)
             {
                 ViewBag.Message = "Macchina inesistente";
@@ -137,13 +139,15 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
             }
 
-            var auto = await _context.Auto.FindAsync(id);
+            var auto = await _context.Auto.FindAsync(id); // Viene presa la macchina che ha l'id passato
             if (auto == null)
             {
-                return NotFound();
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
             }
             return View(auto);
         }
@@ -158,7 +162,8 @@ namespace LamborghiniAuto.Controllers
         {
             if (id != auto.id)
             {
-                return NotFound();
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
             }
 
             if (ModelState.IsValid)
@@ -172,7 +177,8 @@ namespace LamborghiniAuto.Controllers
                 {
                     if (!AutoExists(auto.id))
                     {
-                        return NotFound();
+                        ViewBag.Message = "Macchina inesistente";
+                        return View("Errore");
                     }
                     else
                     {
@@ -190,14 +196,16 @@ namespace LamborghiniAuto.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
             }
 
             var auto = await _context.Auto
-                .FirstOrDefaultAsync(m => m.id == id);
+                .FirstOrDefaultAsync(m => m.id == id); // Viene presa la macchina che ha l'id passato
             if (auto == null)
             {
-                return NotFound();
+                ViewBag.Message = "Macchina inesistente";
+                return View("Errore");
             }
 
             return View(auto);

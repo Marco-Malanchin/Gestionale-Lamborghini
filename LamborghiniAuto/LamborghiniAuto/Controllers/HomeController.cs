@@ -29,28 +29,28 @@ namespace LamborghiniAuto.Controllers
 
         public IActionResult Aventador_svj()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Aventador")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Aventador"))); // Viene passata la macchina Aventador
         }
         public IActionResult STO ()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Huracan")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Huracan"))); // Viene passata la macchina Huracan
         }
         public IActionResult Urus()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Urus")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Urus"))); // Viene passata la macchina Urus
         }
         public IActionResult countach()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Countach")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Countach"))); // Viene passata la macchina Countach
         }
         public IActionResult sian()
         {
-            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Sian")));
+            return View(_context.Auto.FirstOrDefault(a => a.modello.Contains("Sian"))); // Viene passata la macchina Sian
         }
 
         public IActionResult PersMag()
         {
-            var tuple = new Tuple<List<Cliente>, List<Auto>, List<Dipendente>>(_context.Cliente.ToList(), _context.Auto.ToList(), _context.Dipendente.ToList());
+            var tuple = new Tuple<List<Cliente>, List<Auto>, List<Dipendente>>(_context.Cliente.ToList(), _context.Auto.ToList(), _context.Dipendente.ToList()); // Tuple che contiene la lista dei clienti, della auto e i dipendenti
             return View(tuple);
         }
 
